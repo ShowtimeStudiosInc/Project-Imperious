@@ -20,6 +20,7 @@ const {
 
 const AuthService = require('./auth');
 const { userModel, characterModel } = require('./models');
+const Matchmaker = require('./matchmaker');
 
 const app = express();
 const server = http.createServer(app);
@@ -37,6 +38,7 @@ app.use(express.json());
 // In-memory storage (replace with database in production)
 const battleSessions = new Map();
 const abilities = new Map();
+const matchmaker = new Matchmaker();
 
 // Basic routes
 app.get('/api/health', (req, res) => {
@@ -497,6 +499,135 @@ app.get('/api/abilities', AuthService.authMiddleware, (req, res) => {
   res.json({ abilities: userAbilities });
 });
 
+// Matchmaking endpoints
+app.post('/api/match/create', AuthService.authMiddleware, (req, res) => {
+  try {
+    const user = userModel.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const matchRequest = matchmaker.createMatchRequest(req.userId, user.username, req.body);
+    res.json({ success: true, matchRequest });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to create match request' });
+  }
+});
+
+app.post('/api/match/find', AuthService.authMiddleware, (req, res) => {
+  try {
+    const match = matchmaker.findMatch(req.userId, req.body);
+    if (match) {
+      res.json({ success: true, match });
+    } else {
+      res.json({ success: false, message: 'No compatible match found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Matchmaking failed' });
+  }
+});
+
+app.get('/api/match/available', AuthService.authMiddleware, (req, res) => {
+  try {
+    const availableMatches = matchmaker.getAvailableMatches();
+    res.json({ matches: availableMatches });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to get available matches' });
+  }
+});
+
+app.post('/api/match/:matchId/join', AuthService.authMiddleware, (req, res) => {
+  try {
+    const match = matchmaker.joinMatch(req.params.matchId, req.userId, req.body.characterId);
+    if (match) {
+      res.json({ success: true, match });
+    } else {
+      res.status(400).json({ error: 'Unable to join match' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to join match' });
+  }
+});
+
+app.post('/api/match/:matchId/ready', AuthService.authMiddleware, (req, res) => {
+  try {
+    const match = matchmaker.setPlayerReady(req.params.matchId, req.userId);
+    if (match) {
+      res.json({ success: true, match });
+    } else {
+      res.status(400).json({ error: 'Failed to set ready status' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to set ready status' });
+  }
+});
+
+app.post('/api/match/:matchId/start', AuthService.authMiddleware, (req, res) => {
+  try {
+    // Gather character data for all participants
+    const match = matchmaker.getMatch(req.params.matchId);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    // Check if user is in the match
+    const isParticipant = match.participants.some(p => p.userId === req.userId);
+    if (!isParticipant) {
+      return res.status(403).json({ error: 'You are not in this match' });
+    }
+
+    // Get character data for all participants
+    const characterData = {};
+    for (const participant of match.participants) {
+      const character = characterModel.findById(participant.selectedCharacterId);
+      if (character) {
+        characterData[participant.selectedCharacterId] = character;
+      }
+    }
+
+    const updatedMatch = matchmaker.startMatch(req.params.matchId, characterData);
+    if (updatedMatch) {
+      res.json({ success: true, match: updatedMatch });
+    } else {
+      res.status(400).json({ error: 'Failed to start match' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to start match' });
+  }
+});
+
+app.get('/api/match/:matchId', AuthService.authMiddleware, (req, res) => {
+  try {
+    const match = matchmaker.getMatch(req.params.matchId);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    // Check if user is in the match
+    const isParticipant = match.participants.some(p => p.userId === req.userId);
+    if (!isParticipant) {
+      return res.status(403).json({ error: 'You are not in this match' });
+    }
+
+    res.json({ match });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to get match' });
+  }
+});
+
+app.delete('/api/match/:matchId', AuthService.authMiddleware, (req, res) => {
+  try {
+    const success = matchmaker.cancelMatch(req.params.matchId, req.userId);
+    if (success) {
+      res.json({ success: true });
+    } else {
+      res.status(400).json({ error: 'Failed to cancel match' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to cancel match' });
+  }
+});
+
 // Socket.io connection handling
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
@@ -511,6 +642,27 @@ io.on('connection', (socket) => {
         sessionId: data.sessionId,
         participants: session.participants
       });
+    }
+  });
+
+  socket.on('join_match', (data) => {
+    console.log('User joining match:', data);
+    const match = matchmaker.getMatch(data.matchId);
+    if (match) {
+      socket.join(data.matchId);
+      io.to(data.matchId).emit('player_joined', {
+        userId: socket.id,
+        matchId: data.matchId,
+        match
+      });
+    }
+  });
+
+  socket.on('player_ready', (data) => {
+    console.log('Player ready:', data);
+    const match = matchmaker.setPlayerReady(data.matchId, data.userId);
+    if (match) {
+      io.to(data.matchId).emit('match_updated', match);
     }
   });
 
@@ -539,6 +691,14 @@ io.on('connection', (socket) => {
         availablePoints: session.starPointSystem.getAvailablePoints(),
         starGauge: session.starPointSystem.starGauge
       });
+    }
+  });
+
+  socket.on('match_update', (data) => {
+    console.log('Match update:', data);
+    const match = matchmaker.getMatch(data.matchId);
+    if (match) {
+      io.to(data.matchId).emit('match_updated', match);
     }
   });
 

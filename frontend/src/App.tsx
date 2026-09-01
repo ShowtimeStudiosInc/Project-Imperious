@@ -4,6 +4,8 @@ import AbilityBuilder from './components/AbilityBuilder'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import Profile from './components/Profile'
+import MatchLobby from './components/MatchLobby'
+import BattleArena from './components/BattleArena'
 import './App.css'
 
 interface User {
@@ -14,9 +16,10 @@ interface User {
 }
 
 function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'login' | 'register' | 'create' | 'abilities' | 'profile' | 'battle'>('home')
+  const [currentView, setCurrentView] = useState<'home' | 'login' | 'register' | 'create' | 'abilities' | 'profile' | 'lobby' | 'battle'>('home')
   const [user, setUser] = useState<User | null>(null)
   const [token, setToken] = useState<string | null>(null)
+  const [currentMatch, setCurrentMatch] = useState<any>(null)
 
   useEffect(() => {
     // Check for existing session
@@ -45,6 +48,16 @@ function App() {
     setToken(null)
     setUser(null)
     setCurrentView('home')
+  }
+
+  const handleMatchJoin = (match: any) => {
+    setCurrentMatch(match)
+    setCurrentView('battle')
+  }
+
+  const handleBattleEnd = () => {
+    setCurrentMatch(null)
+    setCurrentView('lobby')
   }
 
   return (
@@ -84,6 +97,9 @@ function App() {
                     </button>
                     <button className="btn-secondary" onClick={() => setCurrentView('abilities')}>
                       Build Abilities
+                    </button>
+                    <button className="btn-secondary" onClick={() => setCurrentView('lobby')}>
+                      Battle Lobby
                     </button>
                   </>
                 ) : (
@@ -166,6 +182,21 @@ function App() {
         {currentView === 'profile' && user && (
           <div className="profile-section">
             <Profile user={user} onLogout={handleLogout} />
+          </div>
+        )}
+
+        {currentView === 'lobby' && user && (
+          <div className="lobby-section">
+            <button className="btn-back" onClick={() => setCurrentView('profile')}>
+              ← Back to Profile
+            </button>
+            <MatchLobby token={token || ''} user={user} onMatchJoin={handleMatchJoin} />
+          </div>
+        )}
+
+        {currentView === 'battle' && user && currentMatch && (
+          <div className="battle-section">
+            <BattleArena token={token || ''} match={currentMatch} user={user} onBattleEnd={handleBattleEnd} />
           </div>
         )}
 
