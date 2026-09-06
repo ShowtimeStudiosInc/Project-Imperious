@@ -1,22 +1,21 @@
 :root {
-  /* Imperious Authorities Color Scheme */
+  /* Original Gem Builder Color Scheme */
   --ink: #f4f5ff;
   --muted: #b7bbd5;
   --panel: #0d0d14;
   --line: #2a2a35;
-  --gold: #d4af37;
+  --primary: #6a0dad;
+  --accent: #1e90ff;
   --background: #0a0a0f;
   
-  /* Diamond Division Accents */
-  --maroon-red: #8b0000;
-  --epsilon-blue: #1e90ff;
-  --nightshade-violet: #6a0dad;
-  --emerald-green: #10b981;
-  --saturn-orange: #ff8c00;
+  /* Simplified Accents */
+  --success: #10b981;
+  --warning: #ff8c00;
+  --danger: #8b0000;
   
-  /* Imperial Gradients */
-  --gradient-gold: linear-gradient(135deg, #b8960c 0%, #d4af37 50%, #f4d03f 100%);
-  --gradient-imperial: linear-gradient(135deg, #0a0a0f 0%, #0d0d14 100%);
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #6a0dad 0%, #8b5cf6 100%);
+  --gradient-background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
 }
 
 * {
@@ -42,7 +41,7 @@ body {
   text-align: center;
   margin-bottom: 3rem;
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -60,7 +59,7 @@ body {
   font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 0.5rem;
   font-family: 'Cinzel', 'Trajan Pro', serif;
-  color: var(--gold);
+  color: var(--primary);
   text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
@@ -80,7 +79,7 @@ body {
 .hero-section {
   text-align: center;
   padding: 3rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -88,7 +87,7 @@ body {
 .hero-section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
 
@@ -115,7 +114,7 @@ body {
 .session-input {
   flex: 1;
   padding: 1rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 10px;
   background: #0e1022;
   color: var(--ink);
@@ -127,12 +126,12 @@ body {
 
 .session-input:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--gold);
+  box-shadow: 0 0 0 2px var(--primary);
 }
 
 .btn-primary {
   padding: 1rem 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 10px;
   background: var(--gradient-gold);
   color: #0a0a0f;
@@ -152,10 +151,10 @@ body {
 
 .btn-secondary {
   padding: 1rem 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 10px;
   background: transparent;
-  color: var(--gold);
+  color: var(--primary);
   font-size: 1rem;
   font-weight: bold;
   font-family: inherit;
@@ -172,7 +171,7 @@ body {
 
 .battle-modes {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -180,7 +179,7 @@ body {
 .battle-modes h3 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
   text-align: center;
 }
@@ -202,7 +201,7 @@ body {
 }
 
 .mode-card:hover {
-  border-color: var(--gold);
+  border-color: var(--primary);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
 }
@@ -215,7 +214,7 @@ body {
 .mode-card h4 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
 
@@ -246,7 +245,7 @@ body {
 /* Character Creator Styles */
 .character-creator {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -254,7 +253,7 @@ body {
 .character-creator h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
   text-align: center;
 }
@@ -268,10 +267,10 @@ body {
 
 .character-type-selector button {
   padding: 1rem 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 10px;
   background: transparent;
-  color: var(--gold);
+  color: var(--primary);
   font-size: 1rem;
   font-weight: bold;
   font-family: inherit;
@@ -304,7 +303,7 @@ body {
 }
 
 .form-group label {
-  color: var(--gold);
+  color: var(--primary);
   font-size: 0.9rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -314,7 +313,7 @@ body {
 .form-group input,
 .form-group select {
   padding: 0.75rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 8px;
   background: #0e1022;
   color: var(--ink);
@@ -325,7 +324,7 @@ body {
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--gold);
+  box-shadow: 0 0 0 2px var(--primary);
 }
 
 .form-group input[type="checkbox"] {
@@ -344,7 +343,7 @@ body {
 .stats-display h3 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
 
@@ -404,14 +403,14 @@ body {
 }
 
 .btn-back:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .creator-section,
 .battle-section {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -426,7 +425,7 @@ body {
 /* Ability Builder Styles */
 .ability-builder {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -434,7 +433,7 @@ body {
 .ability-builder h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
   text-align: center;
 }
@@ -455,7 +454,7 @@ body {
 .cost-input-group input {
   flex: 1;
   padding: 0.75rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 8px;
   background: #0e1022;
   color: var(--ink);
@@ -472,7 +471,7 @@ body {
 }
 
 .formula-help .help-text {
-  color: var(--gold);
+  color: var(--primary);
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
   font-weight: bold;
@@ -494,7 +493,7 @@ body {
   background: #0e1022;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  color: var(--gold);
+  color: var(--primary);
   font-family: monospace;
 }
 
@@ -519,7 +518,7 @@ body {
   border: 1px solid var(--line);
   border-radius: 6px;
   background: #0e1022;
-  color: var(--gold);
+  color: var(--primary);
   font-size: 0.85rem;
   font-family: monospace;
   cursor: pointer;
@@ -527,14 +526,14 @@ body {
 }
 
 .btn-variable:hover {
-  border-color: var(--gold);
-  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--primary);
+  background: rgba(106, 13, 173, 0.1);
 }
 
 .formula-preview {
   margin-top: 0.5rem;
   padding: 0.75rem;
-  border: 1px solid var(--epsilon-blue);
+  border: 1px solid var(--accent);
   border-radius: 8px;
   background: rgba(30, 144, 255, 0.1);
   color: var(--ink);
@@ -557,7 +556,7 @@ body {
 
 .form-group textarea {
   padding: 0.75rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 8px;
   background: #0e1022;
   color: var(--ink);
@@ -568,7 +567,7 @@ body {
 
 .form-group textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--gold);
+  box-shadow: 0 0 0 2px var(--primary);
 }
 
 .help-text {
@@ -579,14 +578,14 @@ body {
 
 .validation-errors {
   padding: 1rem;
-  border: 1px solid var(--maroon-red);
+  border: 1px solid var(--danger);
   border-radius: 8px;
   background: rgba(139, 0, 0, 0.1);
   margin-bottom: 1.5rem;
 }
 
 .validation-errors h4 {
-  color: var(--maroon-red);
+  color: var(--danger);
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -614,19 +613,19 @@ body {
 .ability-preview h3 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
 
 .preview-card {
   padding: 1rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 10px;
   background: #0e1022;
 }
 
 .preview-card h4 {
-  color: var(--gold);
+  color: var(--primary);
   font-size: 1.2rem;
   margin-bottom: 0.75rem;
   font-family: 'Cinzel', 'Trajan Pro', serif;
@@ -644,7 +643,7 @@ body {
 
 .battle-text-preview {
   font-style: italic;
-  color: var(--nightshade-violet);
+  color: var(--accent);
 }
 
 .form-actions {
@@ -655,7 +654,7 @@ body {
 
 .abilities-section {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -663,7 +662,7 @@ body {
 /* Authentication Styles */
 .auth-section {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
   max-width: 500px;
@@ -672,7 +671,7 @@ body {
 
 .auth-form {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -680,7 +679,7 @@ body {
 .auth-form h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
   text-align: center;
 }
@@ -693,7 +692,7 @@ body {
 
 .error-message {
   padding: 0.75rem;
-  border: 1px solid var(--maroon-red);
+  border: 1px solid var(--danger);
   border-radius: 8px;
   background: rgba(139, 0, 0, 0.1);
   color: var(--ink);
@@ -704,7 +703,7 @@ body {
 /* Profile Styles */
 .profile-section {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -719,7 +718,7 @@ body {
   gap: 2rem;
   margin-bottom: 2rem;
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 15px;
   background: #101328;
 }
@@ -728,7 +727,7 @@ body {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 3px solid var(--gold);
+  border: 3px solid var(--primary);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -744,7 +743,7 @@ body {
 
 .avatar-placeholder {
   font-size: 2.5rem;
-  color: var(--gold);
+  color: var(--primary);
   font-weight: bold;
 }
 
@@ -755,7 +754,7 @@ body {
 .profile-info h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
 
@@ -786,7 +785,7 @@ body {
 
 .stat-card {
   padding: 1.5rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 12px;
   background: #101328;
   text-align: center;
@@ -795,7 +794,7 @@ body {
 .stat-card h3 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: var(--gold);
+  color: var(--primary);
 }
 
 .stat-card p {
@@ -815,7 +814,7 @@ body {
 .character-roster h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
 
@@ -835,12 +834,12 @@ body {
 }
 
 .character-card:hover {
-  border-color: var(--gold);
+  border-color: var(--primary);
   transform: translateY(-2px);
 }
 
 .character-card h4 {
-  color: var(--gold);
+  color: var(--primary);
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   font-family: 'Cinzel', 'Trajan Pro', serif;
@@ -861,8 +860,8 @@ body {
 
 .character-stats span {
   font-size: 0.75rem;
-  color: var(--nightshade-violet);
-  background: rgba(106, 13, 173, 0.1);
+  color: var(--accent);
+  background: rgba(30, 144, 255, 0.1);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
 }
@@ -870,7 +869,7 @@ body {
 /* Match Lobby Styles */
 .match-lobby {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -878,7 +877,7 @@ body {
 .match-lobby h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
   text-align: center;
 }
@@ -894,14 +893,14 @@ body {
 .character-selection h3 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
 
 .character-selection select {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 8px;
   background: #0e1022;
   color: var(--ink);
@@ -917,7 +916,7 @@ body {
 
 .my-match-request {
   padding: 1.5rem;
-  border: 1px solid var(--epsilon-blue);
+  border: 1px solid var(--accent);
   border-radius: 12px;
   background: rgba(30, 144, 255, 0.1);
   text-align: center;
@@ -938,7 +937,7 @@ body {
 .available-matches h3 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
 
@@ -966,7 +965,7 @@ body {
 }
 
 .match-info h4 {
-  color: var(--gold);
+  color: var(--primary);
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   font-family: 'Cinzel', 'Trajan Pro', serif;
@@ -981,7 +980,7 @@ body {
 /* Battle Arena Styles */
 .battle-arena {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
@@ -997,7 +996,7 @@ body {
 
 .battle-header h2 {
   font-size: 2rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
   margin: 0;
 }
@@ -1028,7 +1027,7 @@ body {
 }
 
 .star-gauge span {
-  color: var(--gold);
+  color: var(--warning);
   font-size: 0.9rem;
   font-weight: bold;
 }
@@ -1050,17 +1049,17 @@ body {
 }
 
 .participant-card.you {
-  border-color: var(--emerald-green);
+  border-color: var(--success);
 }
 
 .participant-card.opponent {
-  border-color: var(--maroon-red);
+  border-color: var(--danger);
 }
 
 .participant-card h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
 
@@ -1096,7 +1095,7 @@ body {
 .ready-status {
   font-size: 1.1rem;
   margin: 1rem 0;
-  color: var(--emerald-green);
+  color: var(--success);
   font-weight: bold;
 }
 
@@ -1106,7 +1105,7 @@ body {
 
 .vs-divider {
   font-size: 2rem;
-  color: var(--gold);
+  color: var(--primary);
   font-weight: bold;
   font-family: 'Cinzel', 'Trajan Pro', serif;
 }
@@ -1125,7 +1124,7 @@ body {
 }
 
 .battle-actions h3 {
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
   margin-bottom: 1rem;
 }
@@ -1150,17 +1149,17 @@ body {
 
 .ability-btn {
   padding: 0.75rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 8px;
   background: #0e1022;
-  color: var(--gold);
+  color: var(--primary);
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .ability-btn:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(106, 13, 173, 0.1);
   transform: translateY(-2px);
 }
 
@@ -1179,7 +1178,7 @@ body {
 }
 
 .battle-log h3 {
-  color: var(--gold);
+  color: var(--primary);
   font-family: 'Cinzel', 'Trajan Pro', serif;
   margin-bottom: 1rem;
 }
@@ -1203,7 +1202,240 @@ body {
 .lobby-section,
 .battle-section {
   padding: 2rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   background: color-mix(in srgb, var(--panel) 90%, transparent);
+}
+
+/* Landing Page Styles */
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+  padding: 2rem;
+}
+
+.landing-content {
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.landing-content .logo-container {
+  margin-bottom: 2rem;
+}
+
+.landing-content .logo-placeholder {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.landing-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #f4f5ff;
+}
+
+.landing-subtitle {
+  color: #b7bbd5;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.auth-container {
+  background: rgba(13, 13, 20, 0.9);
+  border: 1px solid #2a2a35;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.auth-toggle {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #2a2a35;
+}
+
+.auth-toggle p {
+  color: #b7bbd5;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.auth-toggle button {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.auth-toggle button:hover {
+  color: var(--accent);
+}
+
+/* Navigation Styles */
+.main-nav {
+  background: rgba(13, 13, 20, 0.95);
+  border-bottom: 1px solid #2a2a35;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+}
+
+.nav-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f4f5ff;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
+}
+
+.nav-menu li {
+  margin: 0;
+}
+
+.nav-menu button {
+  background: transparent;
+  border: none;
+  color: #b7bbd5;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.nav-menu button:hover {
+  background: rgba(106, 13, 173, 0.1);
+  color: var(--primary);
+}
+
+.nav-menu li.active button {
+  background: rgba(106, 13, 173, 0.2);
+  color: var(--primary);
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-username {
+  color: #f4f5ff;
+  font-size: 0.9rem;
+}
+
+.nav-logout {
+  background: rgba(139, 0, 0, 0.2);
+  border: 1px solid #8b0000;
+  color: #ff6b6b;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.nav-logout:hover {
+  background: rgba(139, 0, 0, 0.4);
+  color: #ff8585;
+}
+
+/* Main Content Area */
+.app-with-nav {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Home Section */
+.home-section {
+  padding: 2rem 0;
+}
+
+.home-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #f4f5ff;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: rgba(13, 13, 20, 0.8);
+  border: 1px solid #2a2a35;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.feature-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(106, 13, 173, 0.15);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #f4f5ff;
+}
+
+.feature-card p {
+  color: #b7bbd5;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Section Content */
+.section-content {
+  padding: 1rem 0;
 }
