@@ -1,4 +1,9 @@
-# Deployment Guide - Vercel + Railway
+# Deployment Guide - Vercel (Frontend) + Railway (Backend)
+
+## ⚠️ Important: Socket.io Compatibility
+**Vercel does not support Socket.io properly.** Since your Battle System relies on real-time Socket.io connections for battles, we must use:
+- **Vercel** for the React frontend (excellent free hosting)
+- **Railway** for the Node.js backend (full Socket.io support)
 
 ## Prerequisites
 - GitHub account
@@ -15,13 +20,18 @@ npm install -g vercel
 
 ### 2. Deploy Frontend
 ```bash
-cd frontend
+# From project root
 vercel
 ```
 
 ### 3. Configure Environment Variables in Vercel
 - Add `VITE_API_URL` = Your Railway backend URL
 - Add `VITE_SOCKET_URL` = Your Railway backend URL
+
+### 4. Vercel will detect:
+- Root `vercel.json` configuration
+- Frontend folder structure
+- Vite build setup
 
 ## Step 2: Backend Deployment (Railway)
 
@@ -57,6 +67,11 @@ railway add postgresql
 railway up
 ```
 
+### 7. Railway will provide:
+- Backend URL (e.g., https://your-backend.railway.app)
+- Database connection details
+- Environment variable management
+
 ## Step 3: MongoDB Atlas Setup (Free Tier)
 
 ### 1. Create MongoDB Atlas Account
@@ -69,8 +84,13 @@ railway up
 - Get connection string
 
 ### 3. Whitelist IP Addresses
-- Add Railway's IP ranges
+- Add Railway's IP ranges (or allow all for development)
 - Add Vercel's IP ranges (or allow all for development)
+
+### 4. Alternative: Use Railway's Built-in Database
+- Railway offers PostgreSQL for free
+- Can use this instead of MongoDB Atlas
+- Simpler setup and no external dependencies
 
 ## Step 4: Update Frontend Configuration
 
@@ -83,6 +103,7 @@ VITE_SOCKET_URL=http://localhost:5000
 ```
 
 ### Production (Vercel)
+Add these environment variables in Vercel dashboard:
 ```env
 VITE_API_URL=https://your-backend.railway.app
 VITE_SOCKET_URL=https://your-backend.railway.app
@@ -93,6 +114,7 @@ VITE_SOCKET_URL=https://your-backend.railway.app
 Ensure your backend's CORS configuration includes:
 - Your Vercel frontend URL
 - Socket.io origin settings
+- Railway automatically handles CORS but verify in code
 
 ## Step 6: Test Deployment
 
@@ -116,9 +138,18 @@ Ensure your backend's CORS configuration includes:
 - Check Railway logs for errors
 
 ### Vercel-Specific:
-- Ensure build command: `npm run build`
-- Output directory: `dist`
-- Static files served from `dist`
+- Ensure build command: `npm run build` from root
+- Output directory: `frontend/dist`
+- Root `vercel.json` handles routing
+- Static files served from `frontend/dist`
+- No backend deployment to Vercel (Socket.io incompatible)
+
+### Railway-Specific:
+- Railway automatically assigns ports
+- Use `process.env.PORT` for server port
+- Supports Socket.io and WebSockets
+- Built-in database options available
+- Check Railway logs for errors
 
 ## Cost Breakdown
 
