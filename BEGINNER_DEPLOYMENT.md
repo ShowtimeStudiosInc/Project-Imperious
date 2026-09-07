@@ -61,6 +61,8 @@ Vercel will ask you some questions:
 - You'll see lots of text scrolling by
 - When it says "Deployed!" you're done
 
+**Note:** If you see build errors, that's normal for the first try. We'll fix them in the next steps.
+
 ### 2.5 Save Your Vercel URL
 - Vercel will give you a URL like: `https://battle-system.vercel.app`
 - **Write this down** - you'll need it later
@@ -190,7 +192,27 @@ Go to your Vercel URL (from Step 2.5)
 
 ## Troubleshooting
 
-**If something doesn't work:**
+**If you get a build error (package.json not found):**
+- This is normal! The project structure needs adjustment
+- Don't worry - we can fix this
+- The Vercel deployment created a project, so we can edit it online
+
+**To fix the build error:**
+1. Go to https://vercel.com/dashboard
+2. Find your "battle-system" project
+3. Click on it
+4. Click "Settings" tab
+5. Click "General" on the left
+6. Scroll down to "Build & Development Settings"
+7. Change "Build Command" to: `cd frontend && npm run build`
+8. Change "Output Directory" to: `frontend/dist`
+9. Change "Install Command" to: `cd frontend && npm install`
+10. Click "Save"
+11. Go to "Deployments" tab
+12. Click the dots (...) next to the failed deployment
+13. Click "Redeploy"
+
+**If something else doesn't work:**
 1. Check that both Vercel and Railway show "Running" status
 2. Make sure you copied the URLs correctly
 3. Make sure environment variables are spelled exactly right
