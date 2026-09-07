@@ -27,12 +27,16 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: process.env.FRONTEND_URL || "http://localhost:3000",
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  credentials: true
+}));
 app.use(express.json());
 
 // In-memory storage (replace with database in production)
@@ -708,7 +712,8 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || '0.0.0.0';
 
-server.listen(PORT, () => {
-  console.log(`Battle System server running on port ${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`Battle System server running on ${HOST}:${PORT}`);
 });

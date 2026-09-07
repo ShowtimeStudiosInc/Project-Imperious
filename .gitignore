@@ -7,10 +7,14 @@ yarn.lock
 .env
 .env.local
 .env.production
+frontend/.env
+backend/.env
 
 # Build outputs
 dist/
 build/
+frontend/dist/
+backend/dist/
 *.log
 
 # IDE
@@ -30,3 +34,7 @@ PROJECT_PLAN.md
 COMBAT_MECHANICS.md
 ONLINE_PLATFORM_ARCHITECTURE.md
 REALISTIC_ROADMAP.md
+
+# Deployment
+.vercel/
+.railway/
