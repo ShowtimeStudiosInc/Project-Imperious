@@ -1,11 +1,11 @@
 :root {
-  /* Original Gem Builder Color Scheme */
+  /* Original Gem Builder Color Scheme - Lighter Purple */
   --ink: #f4f5ff;
   --muted: #b7bbd5;
   --panel: #0d0d14;
   --line: #2a2a35;
-  --primary: #6a0dad;
-  --accent: #1e90ff;
+  --primary: #9b6ad0;
+  --accent: #5db3ff;
   --background: #0a0a0f;
   
   /* Simplified Accents */
@@ -14,7 +14,7 @@
   --danger: #8b0000;
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #6a0dad 0%, #8b5cf6 100%);
+  --gradient-primary: linear-gradient(135deg, #9b6ad0 0%, #b8a0d8 100%);
   --gradient-background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
 }
 
@@ -518,7 +518,7 @@ body {
   border: 1px solid var(--line);
   border-radius: 6px;
   background: #0e1022;
-  color: var(--primary);
+  color: #ffffff;
   font-size: 0.85rem;
   font-family: monospace;
   cursor: pointer;
@@ -527,7 +527,7 @@ body {
 
 .btn-variable:hover {
   border-color: var(--primary);
-  background: rgba(106, 13, 173, 0.1);
+  background: rgba(155, 106, 208, 0.1);
 }
 
 .formula-preview {
@@ -1152,14 +1152,14 @@ body {
   border: 1px solid var(--primary);
   border-radius: 8px;
   background: #0e1022;
-  color: var(--primary);
+  color: #ffffff;
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .ability-btn:hover {
-  background: rgba(106, 13, 173, 0.1);
+  background: rgba(155, 106, 208, 0.1);
   transform: translateY(-2px);
 }
 
@@ -1235,7 +1235,7 @@ body {
 .landing-title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  color: #f4f5ff;
+  color: #ffffff;
 }
 
 .landing-subtitle {
@@ -1267,7 +1267,7 @@ body {
 .auth-toggle button {
   background: none;
   border: none;
-  color: var(--primary);
+  color: #ffffff;
   cursor: pointer;
   font-size: 0.9rem;
   text-decoration: underline;
@@ -1306,7 +1306,7 @@ body {
 .nav-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #f4f5ff;
+  color: #ffffff;
 }
 
 .nav-menu {
@@ -1324,7 +1324,7 @@ body {
 .nav-menu button {
   background: transparent;
   border: none;
-  color: #b7bbd5;
+  color: #ffffff;
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 0.9rem;
@@ -1333,13 +1333,13 @@ body {
 }
 
 .nav-menu button:hover {
-  background: rgba(106, 13, 173, 0.1);
-  color: var(--primary);
+  background: rgba(155, 106, 208, 0.1);
+  color: #ffffff;
 }
 
 .nav-menu li.active button {
-  background: rgba(106, 13, 173, 0.2);
-  color: var(--primary);
+  background: rgba(155, 106, 208, 0.2);
+  color: #ffffff;
 }
 
 .nav-user {
@@ -1349,7 +1349,7 @@ body {
 }
 
 .nav-username {
-  color: #f4f5ff;
+  color: #ffffff;
   font-size: 0.9rem;
 }
 
@@ -1392,7 +1392,7 @@ body {
 .home-section h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #f4f5ff;
+  color: #ffffff;
 }
 
 .feature-grid {
@@ -1415,7 +1415,7 @@ body {
 .feature-card:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(106, 13, 173, 0.15);
+  box-shadow: 0 8px 24px rgba(155, 106, 208, 0.15);
 }
 
 .feature-icon {
@@ -1426,7 +1426,7 @@ body {
 .feature-card h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
-  color: #f4f5ff;
+  color: #ffffff;
 }
 
 .feature-card p {
