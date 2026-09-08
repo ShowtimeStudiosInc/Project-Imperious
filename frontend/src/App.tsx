@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import CharacterCreator from './components/CharacterCreator'
 import AbilityBuilder from './components/AbilityBuilder'
 import LoginForm from './components/LoginForm'
@@ -12,7 +12,18 @@ interface User {
   id: string;
   username: string;
   email: string;
-  profile: any;
+  profile: {
+    avatar?: string;
+    bio?: string;
+    createdAt: string;
+  };
+  characters: string[];
+  battleHistory: any[];
+  friends: string[];
+  settings: {
+    privacy: string;
+    notifications: boolean;
+  };
 }
 
 function App() {
