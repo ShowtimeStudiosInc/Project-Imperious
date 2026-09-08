@@ -14,7 +14,7 @@ class UserModel {
       profile: {
         avatar: null,
         bio: null,
-        createdAt: new Date()
+        createdAt: new Date().toISOString()
       },
       characters: [],
       battleHistory: [],
@@ -23,8 +23,8 @@ class UserModel {
         privacy: 'public',
         notifications: true
       },
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
     };
 
     this.users.set(user.id, user);

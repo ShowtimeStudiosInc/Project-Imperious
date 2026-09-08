@@ -18,6 +18,26 @@ class AuthService {
     return jwt.sign({ userId }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
   }
 
+  static generateUserResponse(user) {
+    return {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      profile: {
+        avatar: user.avatar || null,
+        bio: user.bio || null,
+        createdAt: user.createdAt || new Date().toISOString()
+      },
+      characters: user.characters || [],
+      battleHistory: user.battleHistory || [],
+      friends: user.friends || [],
+      settings: user.settings || {
+        privacy: 'public',
+        notifications: true
+      }
+    };
+  }
+
   static verifyToken(token) {
     try {
       return jwt.verify(token, JWT_SECRET);

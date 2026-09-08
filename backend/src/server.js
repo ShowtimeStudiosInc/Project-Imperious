@@ -81,18 +81,14 @@ app.post('/api/auth/register', async (req, res) => {
       passwordHash
     });
 
-    // Generate token
+    // Generate token and user response
     const token = AuthService.generateToken(user.id);
+    const userResponse = AuthService.generateUserResponse(user);
 
     res.json({
       success: true,
       token,
-      user: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        profile: user.profile
-      }
+      user: userResponse
     });
   } catch (error) {
     res.status(500).json({ error: 'Registration failed' });
@@ -115,18 +111,14 @@ app.post('/api/auth/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    // Generate token
+    // Generate token and user response
     const token = AuthService.generateToken(user.id);
+    const userResponse = AuthService.generateUserResponse(user);
 
     res.json({
       success: true,
       token,
-      user: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        profile: user.profile
-      }
+      user: userResponse
     });
   } catch (error) {
     res.status(500).json({ error: 'Login failed' });
